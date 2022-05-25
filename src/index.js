@@ -2,8 +2,8 @@ import './css/styles.css';
 import debounce from 'lodash.debounce';
 import fetchCountry from './js/fetchCountries'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import countryListTemplate from './templates/countryList.hbs'
-import countryInfoTemplate from './templates/countryInfo.hbs'
+import countryListTpl from './templates/countryList.hbs'
+import countryInfoTpl from './templates/countryInfo.hbs'
 
 const DEBOUNCE_DELAY = 300;
 
@@ -42,13 +42,13 @@ function onFetchCountry(event) {
             renderCountryInfo(response);
         }
         // renderCountryList(response);
-    }).catch(error=> Notify.failure('Хуйня якась'))
+    }).catch(error=> Notify.failure('Oops, there is no country with that name'))
 }
 
 function renderCountryList(country) {
-    countryListRef.innerHTML = countryListTemplate(country);
+    countryListRef.innerHTML = countryListTpl(country);
 }
 
 function renderCountryInfo(country) {
-    countryInfoRef.innerHTML = countryInfoTemplate(country);
+    countryInfoRef.innerHTML = countryInfoTpl(country);
 }
